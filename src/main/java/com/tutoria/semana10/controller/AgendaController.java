@@ -61,5 +61,17 @@ public class AgendaController {
         List<AgendaEntity> agendas = agendaService.findAgendasByTutorId(tutorId);
         return ResponseEntity.ok(agendas);
     }
+
+    @GetMapping("/proximos/aluno-id/{alunoId}")
+    public ResponseEntity<List<AgendaEntity>> getProximosAgendamentosByAlunoId(@PathVariable Long alunoId) {
+        List<AgendaEntity> agendas = agendaService.findProximosAgendamentosByAlunoId(alunoId);
+        return ResponseEntity.ok(agendas);
+    }
+
+    @GetMapping("/proximos/tutor-id/{tutorId}")
+    public ResponseEntity<List<AgendaEntity>> getProximosAgendamentosByTutorId(@PathVariable Long tutorId) {
+        List<AgendaEntity> agendas = agendaService.findProximosAgendamentosByTutorId(tutorId);
+        return ResponseEntity.ok(agendas);
+    }
 }
 

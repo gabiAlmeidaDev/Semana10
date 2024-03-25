@@ -6,6 +6,7 @@ import com.tutoria.semana10.repository.AgendaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -53,5 +54,13 @@ public class AgendaService {
 
     public List<AgendaEntity> findAgendasByTutorId(Long tutorId) {
         return agendaRepository.findByTutorIdOrderByDataAsc(tutorId);
+    }
+
+    public List<AgendaEntity> findProximosAgendamentosByAlunoId(Long alunoId) {
+        return agendaRepository.findByAlunoIdAndDataAfterOrderByDataAsc(alunoId, LocalDateTime.now());
+    }
+
+    public List<AgendaEntity> findProximosAgendamentosByTutorId(Long tutorId) {
+        return agendaRepository.findByTutorIdAndDataAfterOrderByDataAsc(tutorId, LocalDateTime.now());
     }
 }
