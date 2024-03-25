@@ -46,4 +46,12 @@ public class AgendaService {
         AgendaEntity agenda = findById(id);
         agendaRepository.delete(agenda);
     }
+
+    public List<AgendaEntity> findAgendasByAlunoId(Long alunoId) {
+        return agendaRepository.findByAlunoIdOrderByDataAsc(alunoId);
+    }
+
+    public List<AgendaEntity> findAgendasByTutorId(Long tutorId) {
+        return agendaRepository.findByTutorIdOrderByDataAsc(tutorId);
+    }
 }

@@ -49,5 +49,17 @@ public class AgendaController {
         agendaService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/aluno-id/{alunoId}")
+    public ResponseEntity<List<AgendaEntity>> getAgendasByAlunoId(@PathVariable Long alunoId) {
+        List<AgendaEntity> agendas = agendaService.findAgendasByAlunoId(alunoId);
+        return ResponseEntity.ok(agendas);
+    }
+
+    @GetMapping("/tutor-id/{tutorId}")
+    public ResponseEntity<List<AgendaEntity>> getAgendasByTutorId(@PathVariable Long tutorId) {
+        List<AgendaEntity> agendas = agendaService.findAgendasByTutorId(tutorId);
+        return ResponseEntity.ok(agendas);
+    }
 }
 
